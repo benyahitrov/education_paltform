@@ -40,9 +40,14 @@ class Course(models.Model):
     description = models.TextField(verbose_name='Описание курса')
     duration = models.PositiveSmallIntegerField(verbose_name='Длительность')
     price = models.IntegerField(verbose_name='Стоимость')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category,
+                                 verbose_name='Категория',
+                                 on_delete=models.PROTECT)
     lectors = models.ManyToManyField(Lector)
     students = models.ManyToManyField(Student)
+
+    def get_absolute_url(self):
+        return f'/course/{self.id}'
 
     def __str__(self):
         return self.title
