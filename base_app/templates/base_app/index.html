@@ -9,6 +9,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ el.title }}</h5>
                     <p class="card-text">{{ el.description }}</p>
+                    {% if el.lectors %}
+                    <p class="card-text">Преподаватели: {{ el.lectors }}</p>
+                    {% endif %}
                     <a href="{% url 'base_app:course_detail' el.pk %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
