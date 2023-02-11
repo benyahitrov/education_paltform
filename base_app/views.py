@@ -4,7 +4,7 @@ from django.views.generic import (ListView,
                                   UpdateView,
                                   DeleteView)
 from django.urls import reverse_lazy
-from base_app.models import Course, Student
+from base_app.models import Course
 
 
 class PageTitleMixin:
@@ -21,10 +21,21 @@ class CourseListView(PageTitleMixin, ListView):
     template_name = 'base_app/index.html'
     title = 'Главная'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Course.objects.all().select_related('category')
+        return context
+
 
 class CourseDetailView(PageTitleMixin, DetailView):
     model = Course
     title = 'Страница курса'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['students_count'] = self.object.students.all().count()
+        context['lectors'] = self.object.lectors.all()
+        return context
 
 
 class CourseCreateView(CreateView):
@@ -43,4 +54,7 @@ class CourseDeleteView(DeleteView):
     success_url = reverse_lazy('base_app:index')
 
 
-
+class CourseReportView(PageTitleMixin, ListView):
+    model = Course
+    template_name = 'base_app/index.html'
+    title = 'Главная'
