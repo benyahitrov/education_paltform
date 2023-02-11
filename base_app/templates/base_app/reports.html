@@ -1,0 +1,33 @@
+{% extends 'base_app/base.html' %}
+
+{% block content %}
+    <h1>Количество студентов на курсах</h1>
+    <div class="row justify-content-start">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название курса</th>
+                <th scope="col">Количество студентов</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

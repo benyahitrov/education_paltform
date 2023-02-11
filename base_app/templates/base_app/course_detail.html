@@ -1,7 +1,14 @@
 {% extends 'base_app/base.html' %}
 {% block content %}
     <h2>{{ object.title }}</h2>
-    <p>{{ object.description }}</p>
-    <p>{{ object.duration }} мес.</p>
-    <p>{{ object.price }} руб.</p>
+    <p>Описание: {{ object.description }}</p>
+    <p>Длительность: {{ object.duration }} мес.</p>
+    <p>Стоимость: {{ object.price }} руб.</p>
+    <div>Категория: {{ object.category }}</div>
+    <div>Преподаватели:
+        {% for lector in lectors %}
+            <span>{{ lector }} </span>
+        {% endfor %}
+    </div>
+    <div>Количество студентов на курсе: {{ students_count }}</div>
 {% endblock %}

@@ -4,13 +4,13 @@
     <h1>Главная страница</h1>
     <div class="row justify-content-start">
     {% for el in object_list %}
-        <div class="col-3">
-            <div class="card m-2" style="width: 18rem;">
+        <div class="col-4">
+            <div class="card m-3" style="width: 23rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ el.title }}</h5>
                     <p class="card-text">{{ el.description }}</p>
                     {% if el.lectors %}
-                    <p class="card-text">Преподаватели: {{ el.lectors }}</p>
+                    <p class="card-text">Категория: {{ el.category }}</p>
                     {% endif %}
                     <a href="{% url 'base_app:course_detail' el.pk %}" class="btn btn-primary">Подробнее</a>
                 </div>
